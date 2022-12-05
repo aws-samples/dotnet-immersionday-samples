@@ -1,0 +1,9 @@
+@model URLRedirect
+
+<form asp-action="AddRedirect" method="POST">
+    <label asp-for="Id">Id/Short string:</label>
+    <input asp-for="Id">
+    <label asp-for="DestinationUrl">Destination URL:</label>
+    <input asp-for="DestinationUrl">
+    <button type="submit">Add</button>
+</form>

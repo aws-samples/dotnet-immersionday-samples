@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Products Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Products</h1>
+</div>
+
+<p>Check the information below which lists some of the Claims Information for this session</p>
+<table class="table table-striped table-bordered">
+
+    @foreach (var claim in User.Claims)
+    {
+        <tr>
+            <td>@claim.Type</td>
+            <td>@claim.Value</td>
+        </tr>
+    }
+</table>

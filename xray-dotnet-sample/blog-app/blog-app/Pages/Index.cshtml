@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+
+    @foreach (var post in Model.Posts)
+    {
+        <br />
+        <h4>@post.Title</h4>
+        <br />
+        @Html.Raw(post.Content)
+        <hr />
+    }  
+</div>
+
+

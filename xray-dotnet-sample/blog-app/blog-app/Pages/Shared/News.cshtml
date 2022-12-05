@@ -1,0 +1,12 @@
+﻿@using blog_app.Models
+@model List<News>
+@{
+}
+
+        <br />
+        AWS News
+        <hr />
+        @foreach (var newsItem in Model)
+        {
+            <p><a href="@newsItem.Link">@newsItem.Title</a> @newsItem.PublishDate </p>
+        }

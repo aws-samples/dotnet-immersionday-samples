@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "aiml": {
+      "commandName": "Project",
+      "commandLineArgs": "test.png"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+﻿@using blog_app.Models
+@model List<BlogCategory>
+@{
+}
+
+<br />
+Categories
+<hr />
+@foreach (var category in Model)
+{
+    <a href="#">@category.Name</a>
+}
+<hr />

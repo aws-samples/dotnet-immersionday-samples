@@ -1,0 +1,28 @@
+@model RedirectsViewModel
+
+@{
+    ViewData["Title"] = "Your Redirects";
+}
+<div class="panel panel-default todo-panel">
+    <div class="panel-heading">@ViewData["Title"]</div>
+    <table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Destination Url</td>
+        <td>Visits</td>
+    </tr>
+    </thead>
+    @foreach (URLRedirect redirect in Model.Redirects)
+    {
+        <tr>
+            <td>@redirect.Id</td>
+            <td>@redirect.DestinationUrl</td>
+            <td>@redirect.NumVisits</td>
+        </tr>
+    }
+    </table>
+    <div class="panel-footer add-item-form">
+        @await Html.PartialAsync("AddRedirectPartial", new URLRedirect())
+    </div>
+</div>
