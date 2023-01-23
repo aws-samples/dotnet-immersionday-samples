@@ -1,24 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>blog_app</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>blog_app</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="wwwroot\images\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.106.26" />
-    <PackageReference Include="AWSSDK.S3" Version="3.3.111.19" />
-    <PackageReference Include="AWSSDK.SQS" Version="3.3.103.5" />
-    <PackageReference Include="AWSXRayRecorder.Core" Version="2.9.0" />
-    <PackageReference Include="AWSXRayRecorder.Handlers.AspNetCore" Version="2.7.1" />
-    <PackageReference Include="AWSXRayRecorder.Handlers.AwsSdk" Version="2.8.1" />
-    <PackageReference Include="AWSXRayRecorder.Handlers.EntityFramework" Version="1.0.1" />
-    <PackageReference Include="AWSXRayRecorder.Handlers.SqlServer" Version="2.7.1" />
-    <PackageReference Include="AWSXRayRecorder.Handlers.System.Net" Version="2.7.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.4.10" />
+		<PackageReference Include="AWSSDK.S3" Version="3.7.9.50" />
+		<PackageReference Include="AWSSDK.SQS" Version="3.7.2.100" />
+		<PackageReference Include="AWSXRayRecorder.Core" Version="2.11.1" />
+		<PackageReference Include="AWSXRayRecorder.Handlers.AspNetCore" Version="2.8.1" />
+		<PackageReference Include="AWSXRayRecorder.Handlers.AwsSdk" Version="2.9.1" />
+		<PackageReference Include="AWSXRayRecorder.Handlers.EntityFramework" Version="1.2.1" />
+		<PackageReference Include="AWSXRayRecorder.Handlers.SqlServer" Version="2.8.1" />
+		<PackageReference Include="AWSXRayRecorder.Handlers.System.Net" Version="2.8.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+	</ItemGroup>
 
 </Project>

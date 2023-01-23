@@ -49,7 +49,7 @@ namespace blog_app.Pages
         private byte[] LoadAdRotaor()
         {
             byte[] imageBinary = null;
-            string image =  Environment.CurrentDirectory + "/wwwroot/images/ad/AWS.png";
+            string image = System.IO.Path.Combine(Environment.CurrentDirectory, "wwwroot/images/ad/aws.png");
             imageBinary = System.IO.File.ReadAllBytes(image);
             return imageBinary;
         }
