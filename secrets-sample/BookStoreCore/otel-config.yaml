@@ -1,0 +1,61 @@
+﻿receivers:
+  otlp:
+    protocols:
+      grpc:
+  awsecscontainermetrics:
+    collection_interval: 10s
+
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 4000
+    spike_limit_mib: 800
+
+  batch:
+
+exporters:
+  prometheus:
+    endpoint: 0.0.0.0:8889
+    namespace: default
+  prometheusremotewrite:
+    endpoint: https://<YOUR-APS-WORKSPACE/api/v1/remote_write
+    auth:
+      authenticator: sigv4auth
+  awsxray:
+    region: us-east-1
+  logging:
+  file:
+    path: /applogs.json
+  # awsemf: # Exports Metrics to aws cloudwatch.
+  #   log_group_name: 'ADOTLogGroup'
+  #   log_stream_name: 'ADOTLogStream'
+  #   namespace: 'ADOTMetricNS'
+  #   dimension_rollup_option: 1
+  #   log_retention: 60
+
+extensions:
+  health_check:
+  pprof:
+  zpages:
+  memory_ballast:
+    size_mib: 512
+  sigv4auth:
+    region: "us-east-1"
+    service: "aps"
+
+service:
+  extensions: [health_check, pprof, zpages, sigv4auth]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, memory_limiter]
+      exporters: [awsxray]
+    metrics:
+      receivers: [otlp]
+      processors: [batch, memory_limiter]
+      exporters: [prometheusremotewrite]
+  #  logs:
+  #    receivers: [otlp]
+  #    processors: [batch, memory_limiter]
+  #    exporters: [file]
