@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace blog_app.Models
 {
@@ -17,7 +14,7 @@ namespace blog_app.Models
             GenerateBlogPost();
         }
 
-        
+
 
         public List<BlogCategory> GetBlogCategories()
         {
@@ -31,7 +28,7 @@ namespace blog_app.Models
 
         public BlogPost GetBlogPost(int id)
         {
-            return  (from post in _blogPosts where post.Id == id select post).First();
+            return (from post in _blogPosts where post.Id == id select post).First();
         }
 
         private void GenerateBlogPost()
