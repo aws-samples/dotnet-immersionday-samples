@@ -5,41 +5,41 @@ using Amazon;
 using Amazon.Runtime;
 using Microsoft.Extensions.Configuration;
 
-namespace blog_app.Data
+namespace blog_app.Data;
+
+public class DDBHelper
 {
-    public class DDBHelper
+    private AWSCredentials _credentials;
+    private AmazonDynamoDBClient _ddbClient;
+    private Table _ddbTable;
+    IConfiguration _configuration;
+
+    public DDBHelper(IConfiguration configuration)
     {
-        private AWSCredentials _credentials;
-        private AmazonDynamoDBClient _ddbClient;
-        private Table _ddbTable;
-        IConfiguration _configuration;
-
-        public DDBHelper(IConfiguration configuration)
-        {
-            _configuration = configuration;
-            ConfigClient();
-            _ddbTable = Table.LoadTable(_ddbClient, _configuration["DynamoDBTable"]);
-
-        }
-
-        private void ConfigClient()
-        {
-            if (string.Equals(_configuration["Execute"], "Local", StringComparison.OrdinalIgnoreCase) == true)
-            {
-                _credentials = new Amazon.Runtime.StoredProfileAWSCredentials(_configuration["AWSProfileName"]);
-                _ddbClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast1);
-            }
-            else
-                _ddbClient = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
-        }
-
-        public Document GetItems(int id)
-        {
-            var item = _ddbTable.GetItemAsync(id).Result;
-            return item;
-        }
-
-
+        _configuration = configuration;
+        ConfigClient();
+        _ddbTable = Table.LoadTable(_ddbClient, _configuration["DynamoDBTable"]);
 
     }
+
+    private void ConfigClient()
+    {
+        if (string.Equals(_configuration["Execute"], "Local", StringComparison.OrdinalIgnoreCase) == true)
+        {
+            _credentials = new Amazon.Runtime.StoredProfileAWSCredentials(_configuration["AWSProfileName"]);
+            _ddbClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast1);
+        }
+        else
+            _ddbClient = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
+    }
+
+    public Document GetItems(int id)
+    {
+        var item = _ddbTable.GetItemAsync(id).Result;
+        return item;
+    }
+
+
+
 }
+
