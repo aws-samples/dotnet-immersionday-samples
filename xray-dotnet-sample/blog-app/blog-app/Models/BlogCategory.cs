@@ -1,8 +1,6 @@
-﻿namespace blog_app.Models
+﻿namespace blog_app.Models;
+public record BlogCategory
 {
-    public class BlogCategory
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+    public int Id { get; set; }
+    public string Name { get; set; }
 }

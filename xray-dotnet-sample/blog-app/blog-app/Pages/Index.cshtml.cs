@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using blog_app.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System.Web;
-using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Xml.Linq;
 using blog_app.Data;
@@ -20,9 +16,7 @@ namespace blog_app.Pages
         private readonly ILogger<IndexModel> _logger;
         private IBlogRepository _blogRepository;
         private IHttpContextAccessor _accessor;
-        private DDBHelper _ddbHelper;
         private IConfiguration _configuration;
-        private AWSHelper _AWSHelper;
 
         public List<BlogCategory> Categories { get; set; }
         public List<BlogPost> Posts { get; set; }
@@ -31,7 +25,7 @@ namespace blog_app.Pages
         public List<News> News { get; set; }
 
         public byte[] Image { get; set; }
-        public IndexModel(ILogger<IndexModel> logger , IBlogRepository blogRepository , IHttpContextAccessor accessor, IConfiguration configuration)
+        public IndexModel(ILogger<IndexModel> logger, IBlogRepository blogRepository, IHttpContextAccessor accessor, IConfiguration configuration)
         {
             _logger = logger;
             _blogRepository = blogRepository;
@@ -72,9 +66,9 @@ namespace blog_app.Pages
             var items = (from x in xDoc.Descendants("item")
                          select new
                          {
-                            Title = x.Element("title").Value,
-                            Link = x.Element("link").Value,
-                            Pubdate = x.Element("pubDate").Value,                           
+                             Title = x.Element("title").Value,
+                             Link = x.Element("link").Value,
+                             Pubdate = x.Element("pubDate").Value,
                          });
 
             if (items != null)
@@ -83,13 +77,13 @@ namespace blog_app.Pages
                 {
                     Title = i.Title,
                     Link = i.Link,
-                    PublishDate = i.Pubdate,                    
+                    PublishDate = i.Pubdate,
                 }));
             }
 
             return feeds;
         }
 
-      
+
     }
 }
