@@ -14,8 +14,6 @@ namespace blog_app.Data;
 
 public class AWSHelper
 {
-
-    private AWSCredentials _credentials;
     private AmazonS3Client _s3Client;
     private AmazonSQSClient _amazonSQSClient;
     private IConfiguration _configuration;

@@ -11,7 +11,6 @@ namespace blog_app.Data;
 
 public class DDBHelper
 {
-    private AWSCredentials _credentials;
     private AmazonDynamoDBClient _ddbClient;
     private Table _ddbTable;
     IConfiguration _configuration;

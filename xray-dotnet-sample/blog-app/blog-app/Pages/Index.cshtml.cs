@@ -16,9 +16,7 @@ namespace blog_app.Pages
         private readonly ILogger<IndexModel> _logger;
         private IBlogRepository _blogRepository;
         private IHttpContextAccessor _accessor;
-        private DDBHelper _ddbHelper;
         private IConfiguration _configuration;
-        private AWSHelper _AWSHelper;
 
         public List<BlogCategory> Categories { get; set; }
         public List<BlogPost> Posts { get; set; }
