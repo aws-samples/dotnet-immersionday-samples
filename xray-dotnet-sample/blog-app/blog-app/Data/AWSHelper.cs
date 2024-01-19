@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Amazon.Runtime;
+using Amazon.Runtime.CredentialManagement;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.SQS;
@@ -28,7 +30,11 @@ public class AWSHelper
     {
         if (string.Equals(_configuration["Execute"], "Local", StringComparison.OrdinalIgnoreCase) == true)
         {
-            _credentials = new Amazon.Runtime.StoredProfileAWSCredentials(_configuration["AWSProfileName"]);
+            var chain = new CredentialProfileStoreChain();
+            if (!chain.TryGetAWSCredentials(_configuration["AWSProfileName"], out AWSCredentials _credentials))
+            {
+                throw new InvalidDataException($"Unable to get credentials for profile {_configuration["AWSProfileName"]}");
+            }
             _s3Client = new AmazonS3Client(_credentials, Amazon.RegionEndpoint.USEast1);
             _amazonSQSClient = new AmazonSQSClient(_credentials, Amazon.RegionEndpoint.USEast1);
         }

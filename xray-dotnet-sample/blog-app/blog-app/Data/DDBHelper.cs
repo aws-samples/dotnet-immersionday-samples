@@ -4,6 +4,8 @@ using Amazon.DynamoDBv2.DocumentModel;
 using Amazon;
 using Amazon.Runtime;
 using Microsoft.Extensions.Configuration;
+using Amazon.Runtime.CredentialManagement;
+using System.IO;
 
 namespace blog_app.Data;
 
@@ -26,7 +28,11 @@ public class DDBHelper
     {
         if (string.Equals(_configuration["Execute"], "Local", StringComparison.OrdinalIgnoreCase) == true)
         {
-            _credentials = new Amazon.Runtime.StoredProfileAWSCredentials(_configuration["AWSProfileName"]);
+            var chain = new CredentialProfileStoreChain();
+            if (!chain.TryGetAWSCredentials(_configuration["AWSProfileName"], out AWSCredentials _credentials))
+            {
+                throw new InvalidDataException($"Unable to get credentials for profile {_configuration["AWSProfileName"]}");
+            }
             _ddbClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast1);
         }
         else
