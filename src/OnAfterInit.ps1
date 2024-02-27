@@ -2,10 +2,7 @@
 
 choco install dotnet-8.0-sdk
 
-
-
-
-
+#Set directory
 $dir = 'c:\TEMP\'
 mkdir -F $dir
 cd $dir
