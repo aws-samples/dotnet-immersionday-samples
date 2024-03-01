@@ -22,7 +22,7 @@ Start-Process -FilePath $dir$Installer -Args "--quiet --update" -Verb RunAs -Wai
 # Remove-Item $dir$Installer
 
 #Update Visual Studio
-Start-Process -FilePath "C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe" -Verb RunAs -Args " update --force --quiet --productid 'Microsoft.VisualStudio.Product.Community' --channelId 'VisualStudio.17.Release'" -Wait
+Start-Process -FilePath "C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe" -Verb RunAs -Args " update --force --quiet --productid Microsoft.VisualStudio.Product.Community --channelId VisualStudio.17.Release" -Wait
 
 #Update AWS Toolkit for Visual Studio
 $Installer = "AWSToolkitPackage.v17.vsix"
