@@ -15,7 +15,6 @@ Start-Process -FilePath $dir$Installer -Args "/silent /install" -Verb RunAs -Wai
 
 
 #Update Visual Studio Installer
-
 $Installer = "vs_community.exe";
 Invoke-WebRequest "https://aka.ms/vs/17/release/vs_community.exe" -OutFile $Installer;
 Start-Process -FilePath $dir$Installer -Args "--quiet --update" -Verb RunAs -Wait;
@@ -26,15 +25,8 @@ Start-Process -FilePath "C:\Program Files (x86)\Microsoft Visual Studio\Installe
 
 #Update AWS Toolkit for Visual Studio
 $Installer = "AWSToolkitPackage.v17.vsix"
-Invoke-WebRequest "https://amazonwebservices.gallerycdn.vsassets.io/extensions/amazonwebservices/awstoolkitforvisualstudio2022/1.48.0.0/1708627515853/AWSToolkitPackage.v17.vsix" -OutFile $Installer
+Invoke-WebRequest "https://amazonwebservices.gallerycdn.vsassets.io/extensions/amazonwebservices/awstoolkitforvisualstudio2022/1.53.0.0/1716505505925/AWSToolkitPackage.v17.vsix" -OutFile $Installer
 Start-Process -FilePath "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VSIXInstaller.exe" -Verb RunAs -Args "/quiet $dir$Installer" -Wait
-
-
-
-
-
-
-
 
 
 
