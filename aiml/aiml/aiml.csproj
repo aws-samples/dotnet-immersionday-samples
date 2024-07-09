@@ -16,7 +16,7 @@
     <PackageReference Include="AWSSDK.TranscribeService" Version="3.7.14.38" />
     <PackageReference Include="AWSSDK.Translate" Version="3.7.6.7" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
-    <PackageReference Include="System.Text.Json" Version="8.0.2" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
     <Content Include="assets\**"> 
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> 
     </Content> 
