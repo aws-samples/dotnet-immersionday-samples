@@ -25,7 +25,9 @@ Start-Process -FilePath "C:\Program Files (x86)\Microsoft Visual Studio\Installe
 
 #Update AWS Toolkit for Visual Studio
 $Installer = "AWSToolkitPackage.v17.vsix"
-Invoke-WebRequest "https://amazonwebservices.gallerycdn.vsassets.io/extensions/amazonwebservices/awstoolkitforvisualstudio2022/1.56.0.0/1722549125222/AWSToolkitPackage.v17.vsix" -OutFile $Installer
+
+Invoke-WebRequest "https://amazonwebservices.gallerycdn.vsassets.io/extensions/amazonwebservices/awstoolkitforvisualstudio2022/1.62.0.0/1734374195414/AWSToolkitPackage.v17.vsix" -OutFile $Installer
+#Invoke-WebRequest "https://amazonwebservices.gallerycdn.vsassets.io/extensions/amazonwebservices/awstoolkitforvisualstudio2022/1.56.0.0/1722549125222/AWSToolkitPackage.v17.vsix" -OutFile $Installer
 Start-Process -FilePath "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VSIXInstaller.exe" -Verb RunAs -Args "/quiet $dir$Installer" -Wait
 
 #Update Microservice Extractor
