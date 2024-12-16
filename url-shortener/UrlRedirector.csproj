@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>aspnet-URLRedirector-BA70E8C3-6FB3-4A19-A0F9-43BCD3A58150</UserSecretsId>
   </PropertyGroup>
 
